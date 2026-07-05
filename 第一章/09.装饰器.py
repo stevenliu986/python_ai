@@ -56,7 +56,7 @@ class SayHello01:
 
     def __call__(self,func):
         def wrapper(*args, **kwargs):
-            print(f'我要开始{self.msg}计算了。。。')
+            print('我要开始计算了。。。')
             return func(*args, **kwargs)
         return wrapper
 
