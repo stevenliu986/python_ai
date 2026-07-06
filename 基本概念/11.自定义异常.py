@@ -44,3 +44,6 @@ class SchoolNameError(Exception):
         super().__init__('校名异常' + msg)
 
 raise SchoolNameError('学校名称过长')
+
+names = ['john' 'tom', 'jerry','jane']
+iter(names).__iter__().__iter__().__iter__()
