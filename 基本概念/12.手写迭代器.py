@@ -4,7 +4,7 @@
     1. 能被 __iter__ 接受
     2. 能被 __next__ 一步步取值
 """
-
+# 需求：让 for 可以遍历一个类的实例对象
 class Person:
     def __init__(self, name,age,gender,address):
         self.name = name
