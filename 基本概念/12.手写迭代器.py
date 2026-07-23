@@ -64,6 +64,20 @@ class People:
         self.__index += 1
         return value
 
+# 方法三
+class People2:
+    def __init__(self,name,age,gender):
+        self.name = name
+        self.age = age
+        self.gender = gender
+
+    def __iter__(self):
+        return iter([self.name, self.age, self.gender])
+
 p2 = People('Tom', 34, 'male')
 for item in p2:
+    print(item)
+
+p3 = People2('John', 30, 'male')
+for item in p3:
     print(item)
