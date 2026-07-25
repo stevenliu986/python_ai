@@ -95,3 +95,16 @@ for item in f1:
 # 无论是迭代器还是生成器对象，都可以用list,tuple,set等拿到其里面的所有内容（注意：容易挤爆内存）
 fibo_list = list(optimised_fibonacci(15))
 print(fibo_list)
+
+# 生成器表达式：一种用类似列表推导式的语法，快速创建生成器对象的方法
+# 语法：(表达式 for 变量 in 可迭代对象)
+# 使用生成器表达式的场景：当“每个结果只依赖当前的这一个元素”时
+
+nums1 = [10,20,30,40]
+
+# 列表推导式
+nums1_list = [n * 2 for n in nums1]
+
+# 生成器表达式
+gen1 = (n * 2 for n in nums1)
+print(list(gen1))
