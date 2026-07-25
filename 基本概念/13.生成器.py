@@ -10,7 +10,7 @@
         e. yield 后面所写的表达式，会作为本次  __next__ 方法的返回值
     4. 生成器对象是一种特殊的迭代器
     5. yield 也能写在 for 循环里
-    6. yield from 能把一个“可迭代对象”里的东西依次 yield 出去。（替代 for + yield）
+    6. yield from 能把一个“可迭代对象”里的东西依次 yield 出去。（替代 for + yield)
     7. 生成器.send(值)可以让生成器继续执行的同时，给上一次 yield 传值
 """
 def add(x,y):
@@ -35,10 +35,31 @@ next(g)
 # print(next(g)) # 这是最后一步
 # print(next(g)) # 这个会抛出 StopIteration 异常
 
-def demo():
-    nums = [10,20,30,40]
-    yield from nums
+def demo(num_list):
+    """num_list 这个参数为可迭代对象"""
+    yield from num_list
 
-d = demo()
+nums = [10,20,30,40]
+
+d = demo(nums)
 for item in d:
     print(item)
+
+# 使用生成器改写 Person 类
+class Person:
+    def __init__(self, name, age, gender,address):
+        self.name = name
+        self.age = age
+        self.gender = gender
+        self.address = address
+
+    def __iter__(self):
+        yield self.name
+        yield self.age
+        yield self.gender
+        yield self.address
+
+p1 = Person('John', 34, 'Male', 'Sydney')
+
+for attr in p1:
+    print(attr)
