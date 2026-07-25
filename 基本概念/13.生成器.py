@@ -52,12 +52,15 @@ class Person:
         self.age = age
         self.gender = gender
         self.address = address
+        # 下面的代码实际上添加了一个快照，如果后续修改了其中任一值，这个迭代出来的还是旧值
+        # self.__attrs = [name, age, gender,address]
 
     def __iter__(self):
         yield self.name
         yield self.age
         yield self.gender
         yield self.address
+        # yield from self.__attrs 这种写法是不正确的，它违背了使用生成器和 __iter__ 的核心设计原则。
 
 p1 = Person('John', 34, 'Male', 'Sydney')
 
