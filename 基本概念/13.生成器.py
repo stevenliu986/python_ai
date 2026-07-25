@@ -66,3 +66,28 @@ p1 = Person('John', 34, 'Male', 'Sydney')
 
 for attr in p1:
     print(attr)
+
+# 使用生成器编写函数生成斐波那契数
+def fibonacci(n):
+    pre = 1
+    cur = 1
+
+    for i in range(n):
+        if i < 2:
+            yield pre
+        else:
+            value = pre + cur
+            pre = cur
+            cur = value
+            yield value
+
+def optimised_fibonacci(n):
+    """生成前 n 个斐波那契数: 0, 1, 1, 2, 3, 5, ..."""
+    a, b = 0, 1
+    for _ in range(n):
+        yield a
+        a, b = b, a + b
+
+f1 = fibonacci(15)
+for item in f1:
+    print(item)
