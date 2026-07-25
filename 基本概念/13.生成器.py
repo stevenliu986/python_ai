@@ -91,3 +91,7 @@ def optimised_fibonacci(n):
 f1 = fibonacci(15)
 for item in f1:
     print(item)
+
+# 无论是迭代器还是生成器对象，都可以用list,tuple,set等拿到其里面的所有内容（注意：容易挤爆内存）
+fibo_list = list(optimised_fibonacci(15))
+print(fibo_list)
