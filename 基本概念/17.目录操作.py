@@ -34,6 +34,35 @@ path = 'a/b/c/d'
 #     print('目录' if item.is_dir() else '文件', item.name) # 三元表达式
 
 # os.walk(path)：按层级递归遍历指定目录下所有子目录和文件
-result = os.walk('a')
-for item in result:
-    print(item)
+# result = os.walk('a')
+# for item in result:
+#     print(item)
+
+# 练习2：日志记录。
+#   1.用户输入用户名和密码后，程序进行校验：
+#   2.用户名不存在，提示“用户名未注册”，并记录日志。
+#   3.用户名存在，但密码错误，提示“密码错误”，并记录日志。
+#   4.用户名和密码均正确，提示“登录成功”，并记录日志。
+
+users = {
+    'John':'123456',
+    'Tom': '888888',
+    'Jerry': 'abc123'
+}
+
+username = input('请输入用户名：')
+password = input('请输入密码：')
+
+if username not in users:
+    print(f'该{username}未注册')
+    with open('log.txt', 'a+', encoding='utf-8') as f:
+        f.write(f'{username} 用户未注册 \n')
+elif users[username] != password:
+    print('密码不正确')
+    with open('log.txt', 'a+', encoding='utf-8') as f:
+        f.write(f'{username} 用户密码错误 \n')
+
+else:
+    print('登录成功')
+    with open('log.txt', 'a+', encoding='utf-8') as f:
+        f.write(f'{username} 用户登录成功')
