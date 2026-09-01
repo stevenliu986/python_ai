@@ -296,3 +296,32 @@ lst07 = [item*2 for item in [1, 2, 3, 4, 5]]
 lst08 = [item for item in lst07 if item > 5]
 print(lst07)
 print(lst08)
+
+"""
+高级练习题：
+    考察递归、生成器与列表配合、复杂嵌套操作、算法思维、性能优化、函数式编程等。
+"""
+
+# 1. 给定 nums = [1, 2, 3]，生成所有全排列（不使用 itertools）。
+def permute_in_place(nums):
+    res = []
+    n = len(nums)
+
+    def backtrack(first=0):
+        # 填满了所有位置
+        if first == n:
+            res.append(nums[:])  # 保存当前 nums 的一份副本
+            return
+
+        for i in range(first, n):
+            # 动态维护数组：把第 i 个元素换到第 first 个位置
+            nums[first], nums[i] = nums[i], nums[first]
+            # 递归填下一个位置
+            backtrack(first + 1)
+            # 撤销交换（回溯）
+            nums[first], nums[i] = nums[i], nums[first]
+
+    backtrack()
+    return res
+
+print(permute_in_place([1, 2, 3]))
